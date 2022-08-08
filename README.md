@@ -10,7 +10,7 @@ Foi desenvolvido para a conclusão da Sprint 4, 5 e 6 do curso de desenvolvedor 
 - [Sprint 5](https://www.figma.com/file/HD3sjY52cfmedXVdlxkhZ0/WEB%2C-Sprint-5)
 - [Sprint 6](https://www.figma.com/file/Pk5nFBSV295thBCWU6jwW5/WEB.Sprint-6%3A-Around-The-U.S.-pt?node-id=0%3A1)
 
-- [Link para o projeto no Github Pages](https://renanl23.github.io/web_project_4/)
+- [Link para o projeto no Github Pages](https://renanl23.github.io/web_project_4_ptbr/)
 
 ### Tecnologias usadas
 
