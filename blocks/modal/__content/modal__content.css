@@ -1,0 +1,28 @@
+.modal__content {
+  /* display: flex; */
+  display: none;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fefefe;
+  /*margin: 15% auto;  15% from the top and centered */
+  padding-left: 36px;
+  padding-right: 36px;
+  border: none;
+  border-radius: 10px;
+  margin: 195px auto auto auto;
+  max-width: 360px;
+}
+
+@media screen and (max-width: 534px) {
+  .modal__content {
+    margin: 31% auto auto auto;
+  }
+}
+@media screen and (max-width: 320px) {
+  .modal__content {
+    padding-left: 22px;
+    padding-right: 22px;
+    max-width: 230px;
+  }
+}

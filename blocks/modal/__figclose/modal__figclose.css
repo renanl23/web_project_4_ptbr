@@ -1,0 +1,18 @@
+.modal__figclose {
+  color: #fefefe;
+  font-size: 56px;
+  font-weight: 400;
+  cursor: pointer;
+  align-self: flex-end;
+  max-width: 0px;
+}
+
+.modal__figclose:hover {
+  filter: invert(0.5);
+}
+
+@media screen and (max-width: 534px) {
+  .modal__figclose {
+    font-size: 42px;
+  }
+}

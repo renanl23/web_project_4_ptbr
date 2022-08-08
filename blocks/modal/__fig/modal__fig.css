@@ -1,0 +1,9 @@
+.modal__fig {
+  position: relative;
+  display: none;
+  margin: 26px 0 0 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: center;
+}

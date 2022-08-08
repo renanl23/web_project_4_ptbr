@@ -1,0 +1,10 @@
+.element__trash {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.element__trash:hover {
+  filter: invert(0.4);
+}

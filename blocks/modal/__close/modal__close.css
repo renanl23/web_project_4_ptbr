@@ -1,0 +1,21 @@
+.modal__close {
+  position: absolute;
+  left: 100%;
+  bottom: 95%;
+  color: #fefefe;
+  font-size: 56px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  filter: invert(0.5);
+}
+
+@media screen and (max-width: 534px) {
+  .modal__close {
+    left: 90%;
+    bottom: 102%;
+    font-size: 42px;
+  }
+}

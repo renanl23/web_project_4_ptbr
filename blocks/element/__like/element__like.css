@@ -1,0 +1,7 @@
+.element__like {
+  margin: auto 16px 35px auto;
+  cursor: pointer;
+}
+.element__like:hover {
+  filter: invert(0.5);
+}

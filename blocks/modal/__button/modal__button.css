@@ -1,0 +1,19 @@
+.modal__button {
+  margin: 21px 0 36px 0;
+  padding: 14px;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+.modal__button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 534px) {
+  .modal__button {
+    margin: 21px 0 25px 0;
+  }
+}

@@ -1,0 +1,10 @@
+.modal__input-text {
+  outline: 0;
+  border: none;
+  padding: 13px 0;
+  border-bottom: 1px solid #c1bdbd;
+  margin-bottom: 27px;
+}
+.modal__input-text:focus {
+  border-bottom: 1px solid #000000;
+}

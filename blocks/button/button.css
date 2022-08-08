@@ -1,0 +1,8 @@
+.button {
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  background-color: transparent;
+}
+.button:hover {
+  filter: invert(0.5);
+}
