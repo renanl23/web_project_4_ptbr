@@ -1,3 +1,19 @@
+import {
+  enableValidation,
+  hideInputError,
+  hasInvalidInput,
+  toggleButtonState,
+} from "./validate.js";
+
+const formObject = {
+  formSelector: ".modal__content",
+  inputSelector: ".modal__set",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_inactive",
+  inputErrorClass: "modal__input-text_error",
+  errorClass: "modal__input-error_active",
+};
+
 const initialCards = [
   {
     name: "Vale de Yosemite",
@@ -93,8 +109,19 @@ function handleModalFig() {
 function handleModalContent() {
   handleModal();
   formElement.classList.toggle("modal__content_opened");
-  enableValidation();
+  resetFormInputsError(formObject);
+  // enableValidation();
 }
+
+const resetFormInputsError = (formObject) => {
+  const { formSelector } = formObject;
+  const formElement = document.querySelector(formSelector);
+  const inputElements = document.querySelectorAll(".modal__input-text");
+  toggleButtonState(inputElements, formObject);
+  inputElements.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, formObject);
+  });
+};
 
 // Elementos do Modal
 const modalTitle = formElement.querySelector(".modal__title");
@@ -198,91 +225,11 @@ function removeCard(evt) {
   updateElements(initialCards);
 }
 
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("modal__input-text_error");
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("modal__input-error_active");
-};
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("modal__input-text_error");
-  errorElement.classList.remove("modal__input-error_active");
-  errorElement.textContent = "";
-};
-
-const resetFormInputsError = (formElement) => {
-  const inputElements = formElement.querySelectorAll("input");
-  inputElements.forEach((inputElement) => {
-    hideInputError(formElement, inputElement);
-  });
-};
-
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-
 const checkFormValidity = (formElement) => {
   const inputList = Array.from(
     formElement.querySelectorAll(".modal__input-text")
   );
   return !hasInvalidInput(inputList);
-};
-
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-
-const toggleButtonState = (inputList, buttonElement) => {
-  //console.log(hasInvalidInput(inputList));
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("modal__button_inactive");
-  } else {
-    buttonElement.classList.remove("modal__button_inactive");
-  }
-};
-
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(".modal__input-text")
-  );
-  const buttonElement = formElement.querySelector(".modal__button");
-
-  // Aqui, para verificar o estado do botão no início:
-  toggleButtonState(inputList, buttonElement);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      // E aqui, para verificar sempre que qualquer entrada de campo for alterada:
-      toggleButtonState(inputList, buttonElement);
-    });
-  });
-};
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".modal__content"));
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
-
-    const fieldsetList = Array.from(
-      formElement.querySelectorAll(".modal__set")
-    );
-
-    fieldsetList.forEach((fieldset) => {
-      setEventListeners(fieldset);
-      resetFormInputsError(formElement, fieldset);
-    });
-  });
 };
 
 profileEditButton.addEventListener("click", renderModalProfileEdit);
@@ -317,3 +264,4 @@ formElement.addEventListener("submit", handleFormSubmit);
 // Obter os cartão iniciar no carregamento da página
 updateElements(initialCards);
 setEventKeydown();
+enableValidation(formObject);
