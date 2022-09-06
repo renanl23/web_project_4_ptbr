@@ -4,6 +4,7 @@ import {
   hasInvalidInput,
   toggleButtonState,
 } from "./validate.js";
+import { Card } from "./Card.js";
 
 const formObject = {
   formSelector: ".modal__content",
@@ -53,21 +54,26 @@ const subtitleInput = formElement.querySelector("#subtitle");
 // Template Elements
 const elementsList = document.querySelector(".elements");
 
-function renderElement(card) {
-  const templateElements = document.querySelector("template").content;
-  const element = templateElements.querySelector(".element").cloneNode(true);
-  element.querySelector(".element__image").src = card.link;
-  element.querySelector(".element__image").alt = card.name;
-  element.querySelector(".element__title").textContent = card.name;
-  elementsList.append(element);
+function appendElement(cardElement) {
+  elementsList.append(cardElement);
+}
+
+function prependElement(cardElement) {
+  elementsList.prepend(cardElement);
+}
+
+function renderElement(card, prepend = false) {
+  const element = new Card(card, ".element");
+  const cardElement = element.generateCard();
+  prepend ? prependElement(cardElement) : appendElement(cardElement);
 }
 
 function updateElements(cards) {
   elementsList.innerHTML = "";
   cards.forEach((card) => renderElement(card));
-  setEventLikeButtons();
-  setEventTrashButtons();
-  setEventFigButtons();
+  //setEventLikeButtons();
+  //setEventTrashButtons();
+  //setEventFigButtons();
 }
 
 // Botões de ação
@@ -97,10 +103,12 @@ function handleCloseEvent() {
   modalFigOpened ? handleModalFig() : handleModalContent();
 }
 
+// [x]
 function handleModal() {
   modal.classList.toggle("modal_opened");
 }
 
+// [x]
 function handleModalFig() {
   handleModal();
   modalFig.classList.toggle("modal__fig_opened");
@@ -176,18 +184,18 @@ function handleFigButtonEvent(evt) {
   figureCaption.textContent = figureSource.alt;
   handleModalFig();
 }
-
+// [X]
 function setEventFigButtons() {
   const openFigButtons = document.querySelectorAll(".element__image");
   openFigButtons.forEach((figButton) => {
     figButton.addEventListener("click", handleFigButtonEvent);
   });
 }
-
+// [X]
 function handleLikeButtonsEvent(evt) {
   evt.target.classList.toggle("element__like_clicked");
 }
-
+// [X]
 // Função para escutar o evento de click no botão de element__like
 function setEventLikeButtons() {
   const likeButtons = document.querySelectorAll(".element__like");
@@ -195,6 +203,7 @@ function setEventLikeButtons() {
     likeButton.addEventListener("click", handleLikeButtonsEvent);
   });
 }
+// [X]
 // Função para escutar o evento de click no botão de element__trash
 function setEventTrashButtons() {
   const trashButtons = document.querySelectorAll(".element__trash");
@@ -212,13 +221,14 @@ function setEventKeydown() {
     }
   });
 }
-
+// [X]
 function getIndexOfElementEvent(evt) {
   const elementOf = evt.target.parentElement;
   const arrayElements = Array.from(elementOf.parentElement.children);
   return arrayElements.indexOf(elementOf);
 }
 
+// [x]
 function removeCard(evt) {
   const index = getIndexOfElementEvent(evt);
   initialCards.splice(index, 1);
@@ -249,11 +259,11 @@ function handleFormSubmit(evt) {
     titleValue.textContent = titleInput.value;
     subtitleValue.textContent = subtitleInput.value;
   } else {
-    initialCards.unshift({
+    const newCard = {
       name: titleInput.value,
       link: subtitleInput.value,
-    });
-    updateElements(initialCards);
+    };
+    renderElement(newCard, true);
   }
   handleModalContent();
 }
