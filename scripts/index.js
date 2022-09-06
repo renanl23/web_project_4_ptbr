@@ -1,14 +1,17 @@
-import {
-  enableValidation,
-  hideInputError,
-  hasInvalidInput,
-  toggleButtonState,
-} from "./validate.js";
+// import {
+//   enableValidation,
+//   hideInputError,
+//   hasInvalidInput,
+//   toggleButtonState,
+// } from "./validate.js";
+
+import { FormValidator } from "./FormValidator.js";
+
 import { Card } from "./Card.js";
 
 const formObject = {
   formSelector: ".modal__content",
-  inputSelector: ".modal__set",
+  inputSelector: ".modal__input-text",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_inactive",
   inputErrorClass: "modal__input-text_error",
@@ -117,10 +120,11 @@ function handleModalFig() {
 function handleModalContent() {
   handleModal();
   formElement.classList.toggle("modal__content_opened");
-  resetFormInputsError(formObject);
-  // enableValidation();
+  const addFormValidator = new FormValidator(formObject, formElement);
+  addFormValidator.enableValidation();
 }
 
+// [X]
 const resetFormInputsError = (formObject) => {
   const { formSelector } = formObject;
   const formElement = document.querySelector(formSelector);
@@ -235,6 +239,7 @@ function removeCard(evt) {
   updateElements(initialCards);
 }
 
+//[X]
 const checkFormValidity = (formElement) => {
   const inputList = Array.from(
     formElement.querySelectorAll(".modal__input-text")
@@ -251,9 +256,9 @@ modal.addEventListener("click", handleOverlayModalClick);
 function handleFormSubmit(evt) {
   evt.preventDefault(); // Evita o comportamento padrão do formulário
 
-  if (!checkFormValidity(evt.currentTarget)) {
-    return;
-  }
+  // if (!checkFormValidity(evt.currentTarget)) {
+  //   return;
+  // }
   const profileEditForm = evt.target.name.includes("form__edit-profile");
   if (profileEditForm) {
     titleValue.textContent = titleInput.value;
@@ -274,4 +279,4 @@ formElement.addEventListener("submit", handleFormSubmit);
 // Obter os cartão iniciar no carregamento da página
 updateElements(initialCards);
 setEventKeydown();
-enableValidation(formObject);
+//enableValidation(formObject);
