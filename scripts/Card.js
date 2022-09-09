@@ -4,6 +4,8 @@
 // [X] Possui métodos privados para cada manipulador de eventos.
 // [X] Possui um método público que devolve o elemento do cartão totalmente funcional, preenchido com dados.
 
+import { handleModalFig, setModalFig } from "./utils.js";
+
 export class Card {
   constructor(data, cardSelector) {
     this._cardSelector = cardSelector;
@@ -24,17 +26,11 @@ export class Card {
     return cardElement;
   }
   _handleImageClickEvent() {
-    const figure = document.querySelector(".modal__image");
-    const figureCaption = document.querySelector(".modal__figcaption");
-    figure.src = this._image;
-    figure.alt = this._title;
-    figureCaption.textContent = this._title;
-    // handle modal
-    const modal = document.querySelector(".modal");
-    modal.classList.toggle("modal_opened");
-    // handle modalfig
-    const modalFig = document.querySelector(".modal__fig");
-    modalFig.classList.toggle("modal__fig_opened");
+    setModalFig({
+      image: this._image,
+      title: this._title,
+    });
+    handleModalFig();
   }
 
   _handleLikeEvent(evt) {
