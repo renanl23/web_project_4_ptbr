@@ -2,7 +2,7 @@
 
 📝Este é um projeto que mostra os lugares explorados pelo EUA.
 Pode ser visualizado em diversos tamanhos de tela populares (1280px, 768px, 320px).
-Foi desenvolvido para a conclusão da Sprint 4, 5 e 6 do curso de desenvolvedor web da [Practicum](https://practicum.yandex.com/profile/web/).
+Foi desenvolvido para a conclusão da Sprint 4, 5, 6 e 7 do curso de desenvolvedor web da [Practicum](https://practicum.yandex.com/profile/web/).
 
 - Link para o projeto no Figma:
 
