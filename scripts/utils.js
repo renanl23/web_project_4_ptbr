@@ -30,6 +30,9 @@ function closeModalFigListener(evt) {
 }
 
 export function setModalFig(data) {
+  // Todas as imagens são renderizadas com "alt" nesse método, sendo impossível
+  // existir qualquer imagem que não esteja com "alt", a não ser que tenha
+  // propositalmente bloqueado o javascript do navegador.
   const figure = document.querySelector(".modal__image");
   const figureCaption = document.querySelector(".modal__figcaption");
   figure.src = data.image;

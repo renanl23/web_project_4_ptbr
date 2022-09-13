@@ -117,4 +117,3 @@ formElement.addEventListener("submit", handleFormSubmit);
 
 // Obter os cartão iniciar no carregamento da página
 updateElements(initialCards);
-// setEventKeydown();
