@@ -23,17 +23,27 @@ export function handleModal() {
   modal.classList.toggle("modal_opened");
 }
 
+function closeModalFigListener(evt) {
+  if (evt.key === "Escape") {
+    handleEscapeKeyEvent();
+  }
+}
+
 export function setModalFig(data) {
   const figure = document.querySelector(".modal__image");
   const figureCaption = document.querySelector(".modal__figcaption");
   figure.src = data.image;
   figure.alt = data.title;
   figureCaption.textContent = data.title;
+  document.addEventListener("keydown", closeModalFigListener);
 }
 
 export function handleModalFig() {
   handleModal();
   modalFig.classList.toggle("modal__fig_opened");
+  if (!modalFig.classList.contains("modal__fig_opened")) {
+    document.removeEventListener("keydown", closeModalFigListener);
+  }
 }
 
 export function appendElement(cardElement) {
@@ -86,12 +96,4 @@ function handleEscapeKeyEvent() {
   if (modal.classList.contains("modal_opened")) {
     handleCloseEvent();
   }
-}
-
-export function setEventKeydown() {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      handleEscapeKeyEvent();
-    }
-  });
 }

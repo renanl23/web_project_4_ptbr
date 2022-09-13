@@ -1,5 +1,4 @@
 import {
-  setEventKeydown,
   formElement,
   modal,
   handleModal,
@@ -59,8 +58,8 @@ function updateElements(cards) {
 
 function handleOverlayModalClick(evt) {
   const modalFigClicked = evt.target.classList.contains("modal__fig");
-  const childremElementClicked = evt.currentTarget !== evt.target;
-  if (childremElementClicked && !modalFigClicked) {
+  const childrenElementClicked = evt.currentTarget !== evt.target;
+  if (childrenElementClicked && !modalFigClicked) {
     return;
   }
   handleCloseEvent();
@@ -118,4 +117,4 @@ formElement.addEventListener("submit", handleFormSubmit);
 
 // Obter os cartão iniciar no carregamento da página
 updateElements(initialCards);
-setEventKeydown();
+// setEventKeydown();
