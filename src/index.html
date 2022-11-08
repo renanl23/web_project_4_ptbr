@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="html, css, javascript" />
     <meta name="author" content="Renan Lima" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="<%=htmlWebpackPlugin.files.favicon%>"
+    />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <title>EUA Afora</title>
   </head>
   <body>
@@ -15,7 +19,7 @@
       <!-- Header -->
       <header class="header">
         <img
-          src="images/header__logo.svg"
+          src="<%=require('./images/header__logo.svg')%>"
           class="header__logo"
           alt="Around The U.S."
         />
@@ -27,7 +31,7 @@
         <!-- Modal -->
         <div class="modal">
           <figure class="modal__fig">
-            <span class="modal__figclose">&times;</span>
+            <span class="modal__close modal__figclose">&times;</span>
             <img
               src="https://code.s3.yandex.net/web-code/yosemite.jpg"
               alt=""
@@ -35,8 +39,13 @@
             />
             <figcaption class="modal__figcaption">Vale Yosemite</figcaption>
           </figure>
-          <form class="modal__content" name="form__edit-profile" novalidate>
-            <span class="modal__close">&times;</span>
+          <form
+            class="modal__content"
+            id="formEditProfile"
+            name="form__edit-profile"
+            novalidate
+          >
+            <span class="modal__close modal__contentclose">&times;</span>
             <h1 class="modal__title">Editar perfil</h1>
             <fieldset class="modal__set">
               <label class="modal__field">
@@ -72,6 +81,46 @@
               <button type="submit" class="modal__button">Salvar</button>
             </fieldset>
           </form>
+          <form
+            class="modal__content"
+            id="formAddLocal"
+            name="form__add-local"
+            novalidate
+          >
+            <span class="modal__close modal__contentclose">&times;</span>
+            <h1 class="modal__title">Novo Local</h1>
+            <fieldset class="modal__set">
+              <label class="modal__field">
+                <input
+                  type="text"
+                  name="name"
+                  id="title"
+                  placeholder="Titulo"
+                  autocomplete="off"
+                  class="modal__input-text"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span class="modal__input-error title-error"></span>
+              </label>
+              <label class="modal__field">
+                <input
+                  type="url"
+                  name="link"
+                  id="subtitle"
+                  placeholder="Link de Imagem"
+                  autocomplete="off"
+                  class="modal__input-text"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span class="modal__input-error subtitle-error"></span>
+              </label>
+              <button type="submit" class="modal__button">Criar</button>
+            </fieldset>
+          </form>
         </div>
         <!-- Profile -->
         <div class="profile">
@@ -90,19 +139,19 @@
         <template
           ><li class="element">
             <img
-              src="images/element__trash.svg"
+              src="<%=require('./images/element__trash.svg')%>"
               alt="Excluir"
               class="element__trash"
             />
             <img
-              src="images/element_image1.jpg"
+              src="<%=require('./images/element_image1.jpg')%>"
               class="element__image"
               alt="Foto do Vale de Yosemite com rio e céu claro e montanhas a margem"
             />
             <div class="element__info">
               <h2 class="element__title">Vale de Yosemite</h2>
               <img
-                src="images/profile__like.svg"
+                src="<%=require('./images/profile__like.svg')%>"
                 alt="Icone com formato de coração"
                 class="element__like"
               />
@@ -115,6 +164,6 @@
         <p class="footer__copyright">&copy; 2022. Renan Lima</p>
       </footer>
     </div>
-    <script src="./scripts/index.js" type="module"></script>
+    <!-- <script src="./scripts/index.js" type="module"></script> -->
   </body>
 </html>

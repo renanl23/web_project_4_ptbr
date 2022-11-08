@@ -22,6 +22,7 @@
 @import url(../blocks/modal/__figcaption/modal__figcaption.css);
 @import url(../blocks/modal/__content/modal__content.css);
 @import url(../blocks/modal/__content/_opened/modal__content_opened.css);
+@import url(../blocks/modal/__contentclose/modal__contentclose.css);
 @import url(../blocks/modal/__close/modal__close.css);
 @import url(../blocks/modal/__title/modal__title.css);
 @import url(../blocks/modal/__input-text/modal__input-text.css);

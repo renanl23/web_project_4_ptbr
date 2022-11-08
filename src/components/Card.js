@@ -1,13 +1,5 @@
-// [X] Utiliza os dados do cartão, texto e link para a imagem
-// [X] Um seletor de elementos de template como parâmetros para o construtor.
-// [X] Possui métodos privados para trabalhar com marcação e adicionar ouvintes de eventos.
-// [X] Possui métodos privados para cada manipulador de eventos.
-// [X] Possui um método público que devolve o elemento do cartão totalmente funcional, preenchido com dados.
-
-import { handleModalFig, setModalFig } from "./utils.js";
-
-export class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor({ data, cardSelector, handleCardClick }) {
     this._cardSelector = cardSelector;
     this._image = data.link;
     this._title = data.name;
@@ -15,6 +7,7 @@ export class Card {
     this._titleSelector = `${this._cardSelector}__title`;
     this._trashSelector = `${this._cardSelector}__trash`;
     this._likeSelector = `${this._cardSelector}__like`;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -25,16 +18,8 @@ export class Card {
 
     return cardElement;
   }
-  _handleImageClickEvent() {
-    setModalFig({
-      image: this._image,
-      title: this._title,
-    });
-    handleModalFig();
-  }
 
   _handleLikeEvent(evt) {
-    // .cardSelector__like => cardSelector__like
     const classLikeSelector = `${this._likeSelector}`.replace(".", "");
     evt.target.classList.toggle(classLikeSelector + "_clicked");
   }
@@ -53,7 +38,7 @@ export class Card {
   _setEventImage() {
     const image = this._element.querySelector(`${this._imageSelector}`);
     image.addEventListener("click", () => {
-      this._handleImageClickEvent();
+      this._handleCardClick();
     });
   }
 

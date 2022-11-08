@@ -1,8 +1,4 @@
 .modal__figclose {
-  color: #fefefe;
-  font-size: 56px;
-  font-weight: 400;
-  cursor: pointer;
   align-self: flex-end;
   max-width: 0px;
 }
