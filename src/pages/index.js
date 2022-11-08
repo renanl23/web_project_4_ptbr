@@ -76,7 +76,6 @@ const editProfilePopup = new PopupWithForm({
   popupSelector: "#formEditProfile",
   formSelector: '[name="form__edit-profile"]',
   handleFormSubmit: (item) => {
-    console.log(">>>", item);
     const userInfo = new UserInfo({
       titleSelector: ".profile__title",
       subtitleSelector: ".profile__subtitle",
