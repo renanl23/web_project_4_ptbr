@@ -93,8 +93,8 @@ editProfileButton.addEventListener("click", () => {
     subtitleSelector: ".profile__subtitle",
   });
   const userData = userInfo.getUserInfo();
-  document.querySelector("#title").value = userData.title;
-  document.querySelector("#subtitle").value = userData.subtitle;
+  document.querySelector("#profilename").value = userData.title;
+  document.querySelector("#profilesubtitle").value = userData.subtitle;
 });
 // Implementa Event Listener de Popup de Edição Perfil
 editProfilePopup.setEventListeners();
