@@ -41,9 +41,8 @@ const formObject = {
   inputErrorClass: "modal__input-text_error",
   errorClass: "modal__input-error_active",
 };
-
-// Renderiza imagens na página
 const listSelector = ".elements";
+// Renderiza imagens na página
 function createCard(cardItem) {
   const card = new Card({
     data: cardItem,
@@ -105,7 +104,7 @@ const addCardPopup = new PopupWithForm({
   formSelector: '[name="form__add-local"]',
   handleFormSubmit: (cardItem) => {
     const cardElement = createCard(cardItem);
-    document.querySelector(containerSelector).prepend(cardElement);
+    document.querySelector(listSelector).prepend(cardElement);
   },
 });
 // Implementa Event Listener de Popup de Adicionar Card
