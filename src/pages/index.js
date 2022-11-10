@@ -42,6 +42,12 @@ const formObject = {
   errorClass: "modal__input-error_active",
 };
 const listSelector = ".elements";
+
+const userInfo = new UserInfo({
+  titleSelector: ".profile__title",
+  subtitleSelector: ".profile__subtitle",
+});
+
 // Renderiza imagens na página
 function createCard(cardItem) {
   const card = new Card({
@@ -75,10 +81,6 @@ const editProfilePopup = new PopupWithForm({
   popupSelector: "#formEditProfile",
   formSelector: '[name="form__edit-profile"]',
   handleFormSubmit: (item) => {
-    const userInfo = new UserInfo({
-      titleSelector: ".profile__title",
-      subtitleSelector: ".profile__subtitle",
-    });
     userInfo.setUserInfo(item);
   },
 });
@@ -87,10 +89,6 @@ const editProfilePopup = new PopupWithForm({
 const editProfileButton = document.querySelector(".profile__edit");
 editProfileButton.addEventListener("click", () => {
   editProfilePopup.open();
-  const userInfo = new UserInfo({
-    titleSelector: ".profile__title",
-    subtitleSelector: ".profile__subtitle",
-  });
   const userData = userInfo.getUserInfo();
   document.querySelector("#profilename").value = userData.title;
   document.querySelector("#profilesubtitle").value = userData.subtitle;
